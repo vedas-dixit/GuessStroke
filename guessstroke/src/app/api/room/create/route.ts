@@ -25,22 +25,29 @@ export async function POST(req: Request) {
     const roomId = uuidv4();
     const roomCode = generateRoomCode();
 
-    const hostUser = await User.create({
-      name: userName,
-      socketId: socketId,
-      roomId: roomId,
-      isHost: true,
-    });
+    let existingUser = await User.findOne({ name: userName });
+
+    if (!existingUser) {
+      existingUser = await User.create({
+        name: userName,
+        socketId: socketId,
+        roomId: roomId,
+        isHost: true,
+      });
+    }
 
     const newRoom = await Room.create({
       roomId,
       roomCode,
-      hostId: hostUser._id,
-      players: [hostUser._id], 
+      hostId: existingUser._id,
+      players: [existingUser._id], 
       currentWord: "",
       round: 1,
       isActive: true,
     });
+
+    existingUser.roomId = newRoom.roomId;
+    await existingUser.save();
 
     return NextResponse.json({ success: true, roomId: newRoom.roomId, roomCode: newRoom.roomCode }, { status: 201 });
   } catch (error) {

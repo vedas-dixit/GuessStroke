@@ -39,7 +39,7 @@ function HomePage() {
       const response = await JoinRoomWithCode(roomCode, userName);
       if (response.success) {
         console.log(`Joined Room: ${response.roomId}, User ID: ${response.userId}`);
-        router.push(`/room/${response.roomId}`);
+        router.push(`/room/${response.roomCode}`);
       } else {
         console.error(response.error);
       }
