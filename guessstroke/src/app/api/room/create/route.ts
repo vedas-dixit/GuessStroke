@@ -11,7 +11,7 @@ function generateRoomCode() {
 export async function POST(req: Request) {
   try {
     await connectDB();
-    const socketId = "1235" //temp
+    const socketId = "1235"
     const { userName} = await req.json();
 
     if (!userName) {

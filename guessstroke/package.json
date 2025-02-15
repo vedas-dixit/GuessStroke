@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.1",
     "@tanstack/react-query": "^5.66.0",
     "axios": "^1.7.9",
     "mongoose": "^8.10.0",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
     "react-toastify": "^11.0.3",
+    "redux": "^5.0.1",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
     "uuid": "^11.0.5",

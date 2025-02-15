@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
+
+const ReduxWrapper = dynamic(() => import('../components/reduxwrapper/ReduxWrapper'));
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ReduxWrapper>
         {children}
+        </ReduxWrapper>
       </body>
     </html>
   );
