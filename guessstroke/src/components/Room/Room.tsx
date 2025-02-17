@@ -1,8 +1,6 @@
 import React from "react";
 
 
-
-
 function RoomComponent() {
   return (
     <div className="flex flex-col lg:flex-row h-screen bg-gray-900">
